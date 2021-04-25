@@ -22,16 +22,8 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: Row(
             children: [
-              Expanded(
-                child: Container(
-                  color: Colors.blue,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.purple,
-                ),
-              ),
+              _buttonGenero("male"),
+              _buttonGenero("female"),
             ],
           ),
         ),
@@ -58,9 +50,67 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           height: 100,
-          color: Colors.pink,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.pink)),
+                  onPressed: () {},
+                  child: Text(
+                    "Calcular",
+                    style: TextStyle(
+                      fontSize: 28,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         )
       ],
+    );
+  }
+
+  Widget _buttonGenero(String genero) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.all(15),
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+                genero == "male" ? Colors.blue : Colors.pink),
+            padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          ),
+          onPressed: () {},
+          child: Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  child: Image(
+                    image: AssetImage("assets/$genero.png"),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  genero == "male" ? "Hombre" : "Mujer",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
