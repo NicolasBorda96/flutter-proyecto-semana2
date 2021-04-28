@@ -6,8 +6,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _estatura = 170;
+  int _estatura = 166;
   int _peso = 62;
+  int _edad = 38;
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         "$_peso",
                         style: TextStyle(
-                            fontSize: 48, fontWeight: FontWeight.bold),
+                            fontSize: 44, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -209,14 +210,61 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: Container(
-                  color: Colors.amber,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.orange,
+                  ),
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 20),
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Edad",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        "$_edad",
+                        style: TextStyle(
+                            fontSize: 44, fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(shape: CircleBorder()),
+                            onPressed: () {
+                              setState(() {
+                                _edad--;
+                              });
+                            },
+                            child: Text("-",
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold)),
+                          ),
+                          ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(shape: CircleBorder()),
+                            onPressed: () {
+                              setState(() {
+                                _edad++;
+                              });
+                            },
+                            child: Text("+",
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold)),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
         Container(
-          height: 60,
+          height: 80,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
