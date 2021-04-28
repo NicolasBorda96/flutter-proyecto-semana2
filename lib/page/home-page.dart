@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imc/page/resultado.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -292,7 +293,17 @@ class _HomePageState extends State<HomePage> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.pink)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResultadoPage(
+                                  edad: _edad,
+                                  estatura: _estatura,
+                                  peso: _peso,
+                                  genero: _genero,
+                                )));
+                  },
                   child: Text(
                     "Calcular",
                     style: TextStyle(
