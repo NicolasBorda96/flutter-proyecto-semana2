@@ -7,6 +7,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _estatura = 170;
+  int _peso = 62;
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +157,54 @@ class _HomePageState extends State<HomePage> {
             children: [
               Expanded(
                 child: Container(
-                  color: Colors.orange,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.orange,
+                  ),
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 20),
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Peso",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        "$_peso",
+                        style: TextStyle(
+                            fontSize: 48, fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(shape: CircleBorder()),
+                            onPressed: () {
+                              setState(() {
+                                _peso--;
+                              });
+                            },
+                            child: Text("-",
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold)),
+                          ),
+                          ElevatedButton(
+                            style:
+                                ElevatedButton.styleFrom(shape: CircleBorder()),
+                            onPressed: () {
+                              setState(() {
+                                _peso++;
+                              });
+                            },
+                            child: Text("+",
+                                style: TextStyle(
+                                    fontSize: 40, fontWeight: FontWeight.bold)),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -168,7 +216,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Container(
-          height: 100,
+          height: 60,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
